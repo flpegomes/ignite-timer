@@ -6,6 +6,7 @@ import {
   useReducer,
   useState,
 } from 'react'
+
 import {
   ActionTypes,
   addNewCycleAction,
@@ -53,9 +54,15 @@ export function CyclesContextProvider({
       if (storedStateAsJSON) {
         return JSON.parse(storedStateAsJSON)
       }
+
+      return {
+        cycles: [],
+        activeCycleId: null,
+      }
     },
   )
 
+  console.log(cyclesState)
   const { cycles, activeCycleId } = cyclesState
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
 
